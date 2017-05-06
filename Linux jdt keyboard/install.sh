@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
+#Installs jdt-cyr keyboard in linux
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd /usr/share/X11/xkb
-mv "jdt-cyr" symbols
+mv $DIR/jdt-cyr symbols
 cd rules
-sudo python add_rule.py
+sudo python $DIR/add_rule.py
