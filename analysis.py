@@ -25,7 +25,7 @@ def print_hist(histogram):
 	for i, item in enumerate(result):
 		if i > 30:
 			break
-		print item[0]," : ",item[1],'\n=========================='
+		print item[0]," : ",item[1]
 
 
 def make_trie(name):
@@ -42,8 +42,8 @@ def make_trie(name):
 					trie[word[letter]][word[letter+1]] += 1
 	return trie
 
+
 def find_max(trie):
-	#print "\nMost likely succeeding letters\n============================="
 	max_count = {}
 	for i, item in enumerate(trie):
 		max_l = u''
@@ -52,18 +52,24 @@ def find_max(trie):
 			if trie[item][i] > max_c:
 				max_l = trie[item].keys()[0]
 				max_c = trie[item][i]
-		max_count[item] = u' '.join(max_l)
+		max_count[item] = (u' '.join(max_l), max_c)
 	return max_count
 
-def add_to(histogram, data):
-	for i in data.keys():
-		histogram[i] += data[i]
+def add_to(data):
+	histogram = {}
+	for data_set in data:
+		for letter in data_set.keys():
+			if letter in histogram.keys():
+				if histogram[letter][1] < data_set[letter][1]:
+					histogram[letter] = data_set[letter]
+			else:
+				histogram[letter] = data_set[letter]
 	return histogram
 
 def print_trie(trie):
 	print "\nMost likely succeeding letters\n============================="
 	for i in trie.keys():
-		print i, " ==> ", trie[i] 
+		print i, " ==> ", trie[i][0] 
 
 if sys.argv[1] == '-h':
 	poems = make_histogram('jdt.poems.2017-02-01.txt')
@@ -74,11 +80,12 @@ if sys.argv[1] == '-h':
 	print_hist(histogram)
 
 elif sys.argv[1] == '-b':
-	histogram = defaultdict(unicode)
-	poems = add_to(histogram, find_max(make_trie('jdt.poems.2017-02-01.txt')))
-	reviews = add_to(histogram, find_max(make_trie('jdt.reviews.2017-01-31.txt')))
-	stories = add_to(histogram, find_max(make_trie('jdt.stories.2017-01-31.txt')))
-	stories1 = add_to(histogram, find_max(make_trie('jdt.stories.2017-02-01.txt')))
+	histogram = []
+	histogram.append(find_max(make_trie('jdt.poems.2017-02-01.txt')))
+	histogram.append(find_max(make_trie('jdt.reviews.2017-01-31.txt')))
+	histogram.append(find_max(make_trie('jdt.stories.2017-01-31.txt')))
+	histogram.append(find_max(make_trie('jdt.stories.2017-02-01.txt')))
+	histogram = add_to(histogram)
 	print_trie(histogram)
 
 else:
