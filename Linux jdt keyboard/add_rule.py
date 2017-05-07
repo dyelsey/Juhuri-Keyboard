@@ -12,6 +12,14 @@ l[4] = "        <description>Judeo-Tat (Cyrillic)</description>\n"
 l[5] = "        <languageList><iso639Id>jdt</iso639Id><iso639Id>jdt-cyr</iso639Id></languageList>\n"
 l[6] = "      </configItem>\n"
 l[7] = "    </layout>\n"
+l[8] = "     <layout>\n"
+l[9] = "      <configItem>\n"
+l[10] = "        <name>jdt-cyr-russian</name>\n"
+l[11] = "        <shortDescription>jdt-cyr-russian</shortDescription>\n"
+l[12] = "        <description>Judeo-Tat (Russian)</description>\n"
+l[13] = "        <languageList><iso639Id>jdt</iso639Id><iso639Id>jdt-cyr-russian</iso639Id></languageList>\n"
+l[14] = "      </configItem>\n"
+l[15] = "    </layout>\n"
 
 to_add = ''
 for line in l:

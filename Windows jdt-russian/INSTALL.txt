@@ -1,0 +1,3 @@
+To install this new layout on a Windows system, run the setup.exe file and follow the directions. On Windows 7 you can run it as a normal user, the setup will ask for the administrative password.
+
+When done, go to Control Panel -> Region and Language -> Keyboards and Languages -> Change Keyboards and under your language, add the new keyboard layout.
