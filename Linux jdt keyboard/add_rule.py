@@ -2,7 +2,7 @@
 #Adds keyboard in evdev.xml right before </layoutList>
 
 l = []
-for i in range(8):
+for i in range(16):
 	l.append('')
 l[0] = "     <layout>\n"
 l[1] = "      <configItem>\n"
